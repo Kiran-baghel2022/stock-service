@@ -22,24 +22,25 @@ public class StockController {
 	@Autowired
 	StockService stockService;
 
-	//StockList
+	// StockList
 	@GetMapping("/stocklist")
 	public ResponseEntity<Object> getStockList() {
 
 		List<GoodRecordDetails> stockList = stockService.stockList();
-		Optional<?> optional=Optional.ofNullable(stockList);
-		if(optional.isPresent()) {
-			return new ResponseEntity<Object>(stockList,HttpStatus.OK);
-		}else {
-			return new ResponseEntity<Object>(stockList,HttpStatus.NO_CONTENT);
+		Optional<?> optional = Optional.ofNullable(stockList);
+		if (optional.isPresent()) {
+			return new ResponseEntity<Object>(stockList, HttpStatus.OK);
+		} else {
+			return new ResponseEntity<Object>(stockList, HttpStatus.NO_CONTENT);
 		}
 	}
-	
-	//get Stock by Id
-		@GetMapping("/stocklist/{id}")
-		public ResponseEntity<Object> getStockById(@PathVariable Integer id) {
-			Optional<GoodRecordDetails> goodRecordDetails = stockService.getStockFindById(id);
-			if(!goodRecordDetails.isPresent()) throw new StockNotFoundException();
-				return new ResponseEntity<Object>(goodRecordDetails,HttpStatus.OK);
-		}
+
+	// get Stock by Id
+	@GetMapping("/stocklist/{id}")
+	public ResponseEntity<Object> getStockById(@PathVariable Integer id) {
+		Optional<GoodRecordDetails> goodRecordDetails = stockService.getStockFindById(id);
+		if (!goodRecordDetails.isPresent())
+			throw new StockNotFoundException();
+		return new ResponseEntity<Object>(goodRecordDetails, HttpStatus.OK);
+	}
 }
