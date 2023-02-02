@@ -5,7 +5,7 @@ pipeline {
           steps {
           
              bat "rmdir /s /q stock-service"
-             bat "git clone "
+             bat "git clone https://github.com/Kiran-baghel2022/stock-service.git"
              bat "mvn clean -f stock-service"
           
           }
