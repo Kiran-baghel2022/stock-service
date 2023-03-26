@@ -7,7 +7,7 @@ pipeline {
     stages {
       stage('git repo & clean') {
           steps {
-          
+             bat "rmdir /s /q stock-service"
              bat "git clone https://github.com/Kiran-baghel2022/stock-service.git"
              bat "mvn clean -f stock-service"
           
